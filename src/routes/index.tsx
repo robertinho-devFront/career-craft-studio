@@ -1,24 +1,91 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { ExitIntentPopup } from "@/components/site/ExitIntentPopup";
+import { ContactForm } from "@/components/site/ContactForm";
+import {
+  Hero,
+  Problem,
+  Services,
+  Templates,
+  WhyMe,
+  Testimonials,
+  Faq,
+  Blog,
+  Newsletter,
+  Booking,
+  faqItems,
+} from "@/components/site/sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Création de CV Professionnel | Templates PPTX & PSD";
+const description =
+  "Refonte de CV, modèles professionnels PPTX et PSD, coaching personnalisé et optimisation ATS.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      name: "CV Signature",
+      description,
+      email: "contact@cvsignature.fr",
+      telephone: "+33600000000",
+      priceRange: "€€",
+      address: { "@type": "PostalAddress", addressLocality: "Paris", addressCountry: "FR" },
+    },
+    {
+      "@type": "Service",
+      serviceType: "Création et optimisation de CV",
+      provider: { "@type": "LocalBusiness", name: "CV Signature" },
+      areaServed: "FR",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero />
+        <Problem />
+        <Services />
+        <Templates />
+        <WhyMe />
+        <Testimonials />
+        <Blog />
+        <Faq />
+        <Newsletter />
+        <Booking />
+        <ContactForm />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <ExitIntentPopup />
     </div>
   );
 }
