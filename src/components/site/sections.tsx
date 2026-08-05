@@ -364,7 +364,7 @@ const testimonials = [
 
 export function Testimonials() {
   const [index, setIndex] = useState(0);
-  const t = testimonials[index];
+  const t = testimonials[index]!;
 
   return (
     <section id="temoignages" className="bg-secondary py-20">

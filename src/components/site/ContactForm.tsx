@@ -87,7 +87,7 @@ export function ContactForm() {
                   </option>
                 ))}
               </select>
-              {errors.prestation && <p className="mt-1 text-xs text-destructive">{errors.prestation}</p>}
+              {errors['prestation'] && <p className="mt-1 text-xs text-destructive">{errors['prestation']}</p>}
             </div>
 
             <div>
@@ -108,7 +108,7 @@ export function ContactForm() {
                 Message
               </label>
               <textarea id="message" name="message" rows={5} maxLength={1000} className={field} />
-              {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+              {errors['message'] && <p className="mt-1 text-xs text-destructive">{errors['message']}</p>}
             </div>
 
             <button
