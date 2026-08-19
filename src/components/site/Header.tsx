@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, FileText } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "./Logo";
 
 const links = [
   { label: "Services", href: "/#services" },
@@ -18,9 +19,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <nav className="container-page flex h-16 items-center justify-between" aria-label="Navigation principale">
         <Link to="/" className="flex items-center gap-2 font-display text-base font-semibold">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-navy text-navy-foreground">
-            <FileText className="size-4" aria-hidden="true" />
-          </span>
+          <Logo iconOnly size={32} />
           CV<span className="-ml-2 text-primary">Signature</span>
         </Link>
 

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/mentions-legales")({
       <h2>Éditeur du site</h2>
       <p>
         CV Signature — consultant indépendant en création et optimisation de CV. Email :
-        contact@cvsignature.fr. Téléphone : +33 6 00 00 00 00. SIRET : 000 000 000 00000.
+        rdasilva75@gmail.com. Téléphone : 06 10 21 86 62.
       </p>
       <h2>Hébergement</h2>
       <p>Le site est hébergé par un prestataire d'hébergement cloud au sein de l'Union européenne.</p>

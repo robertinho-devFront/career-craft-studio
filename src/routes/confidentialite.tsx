@@ -36,7 +36,7 @@ export const Route = createFileRoute("/confidentialite")({
       <h2>Vos droits</h2>
       <p>
         Accès, rectification, effacement, portabilité et opposition. Écrivez à
-        contact@cvsignature.fr ; une réponse vous est adressée sous 30 jours.
+        rdasilva75@gmail.com ; une réponse vous est adressée sous 30 jours.
       </p>
       <h2>Cookies</h2>
       <p>

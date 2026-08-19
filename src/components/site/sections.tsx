@@ -30,6 +30,22 @@ import template1 from "@/assets/template-1.jpg";
 import template2 from "@/assets/template-2.jpg";
 import template3 from "@/assets/template-3.jpg";
 
+function ComingSoon({ text }: { text: string }) {
+  return (
+    <div className="mt-6 flex flex-col items-center gap-3 rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-6 py-5 text-center sm:flex-row sm:justify-between sm:text-left">
+      <div className="flex items-center gap-3">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Sparkles className="size-5" aria-hidden="true" />
+        </span>
+        <p className="text-sm text-muted-foreground">{text}</p>
+      </div>
+      <a href="#newsletter" className="shrink-0 text-sm font-semibold text-primary hover:underline">
+        Être informé(e) en avant-première →
+      </a>
+    </div>
+  );
+}
+
 function SectionTitle({
   eyebrow,
   title,
@@ -236,6 +252,9 @@ export function Services() {
             </Reveal>
           ))}
         </div>
+        <Reveal>
+          <ComingSoon text="De nouvelles prestations arrivent prochainement." />
+        </Reveal>
       </div>
     </section>
   );
@@ -291,6 +310,9 @@ export function Templates() {
             </Reveal>
           ))}
         </div>
+        <Reveal>
+          <ComingSoon text="De nouveaux modèles de CV arrivent prochainement." />
+        </Reveal>
         <Reveal>
           <p className="mt-8 text-center text-xs text-muted-foreground">
             Paiement sécurisé et téléchargement automatique après achat.

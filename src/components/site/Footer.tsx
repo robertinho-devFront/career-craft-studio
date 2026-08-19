@@ -12,11 +12,11 @@ export function Footer() {
             et optimisation ATS.
           </p>
           <div className="mt-5 flex flex-col gap-2 text-sm text-navy-foreground/70">
-            <a href="mailto:contact@cvsignature.fr" className="flex items-center gap-2 hover:text-navy-foreground">
-              <Mail className="size-4" aria-hidden="true" /> contact@cvsignature.fr
+            <a href="mailto:rdasilva75@gmail.com" className="flex items-center gap-2 hover:text-navy-foreground">
+              <Mail className="size-4" aria-hidden="true" /> rdasilva75@gmail.com
             </a>
-            <a href="tel:+33600000000" className="flex items-center gap-2 hover:text-navy-foreground">
-              <Phone className="size-4" aria-hidden="true" /> +33 6 00 00 00 00
+            <a href="tel:+33610218662" className="flex items-center gap-2 hover:text-navy-foreground">
+              <Phone className="size-4" aria-hidden="true" /> 06 10 21 86 62
             </a>
             <a href="https://www.linkedin.com" className="flex items-center gap-2 hover:text-navy-foreground">
               <Linkedin className="size-4" aria-hidden="true" /> LinkedIn

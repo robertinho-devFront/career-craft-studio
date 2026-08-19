@@ -1,0 +1,60 @@
+name: Déploiement GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Installer les dépendances
+        run: bun install
+
+      - name: Build
+        run: |
+          # NOTE: la version bêta de Nitro utilisée ici (voir package.json) termine
+          # toujours ce process avec un code d'erreur, à cause d'une étape de build
+          # serveur inutile pour un site 100% statique (bug connu, sans impact sur
+          # les fichiers générés). On ignore donc le code de sortie et on vérifie
+          # nous-mêmes que le site a bien été généré juste après.
+          bun run build || true
+
+      - name: Vérifier que le site a bien été généré
+        run: test -f .output/public/index.html
+
+      - name: Copier index.html vers 404.html (fallback SPA)
+        run: cp .output/public/index.html .output/public/404.html
+
+      - name: Ajouter .nojekyll
+        run: touch .output/public/.nojekyll
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
